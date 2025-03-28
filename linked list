@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct Node{
+    int data;
+    struct Node* next;
+};
+struct Node*createNode(int x){
+         struct Node*newNode=malloc(sizeof(struct Node));
+         newNode->data=x;
+         newNode->next=NULL;
+         
+         return newNode;
+        }
+void printList(struct Node*p){
+    while(p!=NULL){
+        printf("%d ",p->data);
+        p=p->next;
+    }
+}
+
+int getLength(struct Node* p){
+    int len=0;
+    while(p!=NULL){
+        len++;
+        p=p->next;
+    }
+    return len;
+}
+void getMid(struct Node* p){
+    int length=getLength(p);
+    int mid=length/2;
+    
+    while(mid--){
+        p=p->next;
+    }
+    printf("%d",p->data);
+}
+int main() {
+  struct Node* head=createNode(10);
+  head->next=createNode(20);
+  head->next->next=createNode(30);
+  head->next->next->next=createNode(40);
+  head->next->next->next->next=createNode(50);
+  
+  printList(head);
+  printf("\n");
+  getMid(head);
+  
+ 
+
+    return 0;
+}
