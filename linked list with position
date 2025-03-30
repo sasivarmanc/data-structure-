@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<stdlib.h>
+  struct node{
+    int roll;
+    struct node *next;
+  }dummy;
+  void insert(struct node *head){
+    int post,n;
+    scanf("%d",&post);
+    scanf(" %d",&n);
+    int c=0;
+    struct node *preve=head;
+    while(c<(post-1) &&preve!=NULL)
+    {
+      c++;
+      preve=preve->next;
+    }
+    if(preve==NULL)
+    {
+      printf("length excit");
+    }
+    else
+    {
+      struct node *newnode=(struct node *)malloc(sizeof(dummy));
+      newnode->roll=n;
+      newnode->next=preve->next;
+      preve->next=newnode;
+    }
+    }
+  void display(struct node *head){
+    struct node *temp=head->next;
+    while(temp!=NULL){
+      printf("%d\n",temp->roll);
+      temp=temp->next;
+      
+    }
+  }
+  int main(){
+    struct node *head=(struct node *)malloc(sizeof(dummy));
+    head->next=NULL;
+    insert(head);
+    insert(head);
+    insert(head);
+    insert(head);
+    insert(head);
+    display(head);
+    return 0;
+}
