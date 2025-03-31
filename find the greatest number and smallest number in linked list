@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+  int n;
+  struct node*next;
+};
+
+void insert(struct node*head){
+  struct node*last=head;
+  while(last->next!=NULL){
+    last=last->next;
+  }
+  struct node*newnode=malloc(sizeof(struct node));
+  int nu;
+  scanf("%d",&nu);
+  newnode->n=nu;
+  last->next=newnode;
+  newnode->next=NULL;
+}
+
+void display(struct node*head){
+  int max=head->n;
+  struct node*temp=head->next;
+  while(temp!=NULL){
+    if(temp->n>max){
+      max=temp->n;
+    }
+    temp=temp->next;
+  }
+  printf("Greatest number:%d\n",max);
+}
+void display1(struct node*head){
+  int min=head->next->n;
+  struct node*temp=head->next;
+  while(temp!=NULL){
+    if(temp->n<min){
+      min=temp->n;
+    }
+    temp=temp->next;
+  }
+  printf("Smallest value:%d",min);
+}
+
+int main(){
+  struct node*head=malloc(sizeof(struct node));
+  head->next=NULL;
+  insert(head);
+  insert(head);
+  insert(head);
+  insert(head);
+  insert(head);
+  display(head);
+  display1(head);
+  return 0;
+}
