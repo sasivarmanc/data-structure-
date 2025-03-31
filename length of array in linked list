@@ -1,0 +1,40 @@
+ #include<stdio.h>
+ #include<stdlib.h>
+ struct node{
+   int n;
+   struct node*next;
+ };
+ 
+ void insert(struct node*head){
+   struct node*last=head;
+   while(last->next!=NULL){
+     last=last->next;
+   }
+   struct node*newnode=malloc(sizeof(struct node));
+   int nu;
+   scanf("%d",&nu);
+   newnode->n=nu;
+   last->next=newnode;
+   newnode->next=NULL;
+   
+ }
+ void display(struct node*head){
+   struct node*temp=head->next;
+   int c=0;
+   while(temp!=NULL){
+     c++;
+     temp=temp->next;
+   }
+   printf(" Length :%d",c);
+ }
+ int main(){
+   struct node*head=malloc(sizeof(struct node));
+   head->next=NULL;
+   insert(head);
+   insert(head);
+   insert(head);
+   insert(head);
+   insert(head);
+   display(head);
+   return 0;
+ }
